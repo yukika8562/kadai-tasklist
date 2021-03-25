@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<h1>新規ユーザー登録</h1>
 
 <div>
   <%= form_with(model: @user, local: true) do |f| %>
@@ -25,5 +25,8 @@
     </div>
     
     <%= f.submit '登録' %>
+    <div>
+    <%= link_to 'ログイン画面に戻る', root_path %>
+    </div>
   <% end %>
 </div>
