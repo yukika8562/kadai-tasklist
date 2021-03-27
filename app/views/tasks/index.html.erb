@@ -1,9 +1,12 @@
-<% if logged_in? %>
-  <p>ログイン完了ユーザー: <%= current_user.userid %></p>
+<h2>ログイン完了ユーザー: <%= current_user.userid %></h2>
   <div>
-    <%= render 'tasks/tasks', tasks: @tasks %>
+    <% @tasks.each do |task| %>
+    　<p><%= link_to task.id,task %></p>
+      <p>タスク：<%= task.content %></p>
+      <p>ステータス:<%= task.status %></p>
+    <% end %>
   </div>
-  <aside>
+  <div>
     <%= form_with(model: @task, local: true) do |f| %>
     <div>
       <%= f.label :content, 'タスク'  %>
@@ -15,17 +18,8 @@
     </div>
       <%= f.submit '新規タスクの作成' %>
     <% end %>
-  </aside>
+  </div>
   
   <div>
     <%= link_to 'ログアウト', logout_path %>
   </div>
-<% else %>
-  <h1>タスクリスト</h1>
-  <div>
-    <ul>
-      <li><%= link_to 'ログイン', login_path %></li>
-      <li><%= link_to 'ユーザー登録', signup_path %></li>
-    </ul>
-  </div>
-<% end %>
