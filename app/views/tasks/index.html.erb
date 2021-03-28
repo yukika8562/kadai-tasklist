@@ -1,23 +1,12 @@
 <h2>ログイン完了ユーザー: <%= current_user.userid %></h2>
-  <div>
+  <ul>
     <% @tasks.each do |task| %>
-    　<p><%= link_to task.id,task %></p>
-      <p>タスク：<%= task.content %></p>
-      <p>ステータス:<%= task.status %></p>
+    　<li><%= link_to task.id,task %> : タスク：<%= task.content %> &gt; ステータス：<%= task.status %></li>
     <% end %>
-  </div>
+  </ul>
+  
   <div>
-    <%= form_with(model: @task, local: true) do |f| %>
-    <div>
-      <%= f.label :content, 'タスク'  %>
-      <%= f.text_field :content %>
-    </div>
-    <div>
-      <%= f.label :status,  'ステータス'  %>
-      <%= f.text_field :status %>
-    </div>
-      <%= f.submit '新規タスクの作成' %>
-    <% end %>
+    <%= link_to '新規タスクの作成', new_task_path %>
   </div>
   
   <div>
